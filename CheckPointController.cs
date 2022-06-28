@@ -10,6 +10,9 @@ public class CheckPointController : MonoBehaviour
     private CheckPoint[] checkpoints;
     // checkpoint[]: checkpoint Array
 
+    public Vector3 spawnPoint;
+
+
     private void Awake()
     {
         instance = this;
@@ -30,12 +33,17 @@ public class CheckPointController : MonoBehaviour
     public void DeactivateCheckPoints()
     {
         for(int i = 0; i < checkpoints.Length; i++)
-        //loop d?ng for, cho kí t? int i b?ng o, trong unity set cplength = 3 thì 0<3, khi ?ó i+1 và làm ?i?u trong ngo?c, ?i?u này loop cho ??n khi i + cplenght(vidu=3) thì stop
+        //loop d?ng for, cho kí t? int i b?ng o, trong unity set cplength(?? dài c?a list) = 3 thì 0<3, khi ?ó i+1 và làm ?i?u trong ngo?c, ?i?u này loop cho ??n khi i + cplenght(vidu=3) thì stop
         {
             checkpoints[i].ResetCheckPoint();
             // i này t??ng tr?ng cho s? trong bang list checkpoint
            
         }
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawnPoint) //varible newSpawnPoint only exist within this function
+    {
+        spawnPoint = newSpawnPoint;
     }
 
 }
