@@ -57,7 +57,7 @@ public class PlayerHealthControl : MonoBehaviour
             else
             {
                 invincibleCounter = invincibleLength;
-                /*theSR.color= new Color(theSR.color.r, theSR.color.g, theSR.color.b, .5f);*/
+                theSR.color= new Color(theSR.color.r, theSR.color.g, theSR.color.b, .5f);
 
                 PlayerControl.instance.KnockBack();
             }
@@ -66,5 +66,19 @@ public class PlayerHealthControl : MonoBehaviour
 
         }
 
+    }
+
+    public void HealPlayer()
+    {
+        //currentHealth = maxHealth;
+
+        currentHealth++;
+
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        UIController.instance.UpdateHealthDisplay(); 
     }
 }

@@ -22,6 +22,8 @@ public class CheckPointController : MonoBehaviour
     void Start()
     {
         checkpoints = FindObjectsOfType<CheckPoint>(); 
+
+        spawnPoint = PlayerControl.instance.transform.position;
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class CheckPointController : MonoBehaviour
     public void DeactivateCheckPoints()
     {
         for(int i = 0; i < checkpoints.Length; i++)
-        //loop d?ng for, cho kí t? int i b?ng o, trong unity set cplength(?? dài c?a list) = 3 thì 0<3, khi ?ó i+1 và làm ?i?u trong ngo?c, ?i?u này loop cho ??n khi i + cplenght(vidu=3) thì stop
+        //loop dang for, cho kí tu int i = o, trong unity set cplength(do dài's list) = 3 thì 0<3, khi dó i+1 và do thing below, sau do loop cho den khi i + cplenght(vidu=3) thì stop
         {
             checkpoints[i].ResetCheckPoint();
             // i này t??ng tr?ng cho s? trong bang list checkpoint
