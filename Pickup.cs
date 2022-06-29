@@ -13,7 +13,7 @@ public class Pickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !isCollected && !isHealed)
+        if (other.CompareTag("Player") && !isCollected)
             // play collide into gem va iscolect la false thi moi dc thuc hien, tranh vong loop pickup gem lien tuc 
         {
             if (isGem)
@@ -35,6 +35,8 @@ public class Pickup : MonoBehaviour
 
                 isCollected = true;
                 Destroy(gameObject);
+                
+                UIController.instance.UpdateGemCount(); 
 
             }
 
