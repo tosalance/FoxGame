@@ -17,12 +17,15 @@ public class EnemyController : MonoBehaviour
     public float moveTime, waitTime;
     private float moveCount, waitCount;
 
+    private Animator anim;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         theRB = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         
         leftPoint.parent = null; 
         rightPoint.parent = null;
@@ -62,16 +65,19 @@ public class EnemyController : MonoBehaviour
                 {
                     movingRight = true;
                 }
-
+                               
             }
 
-            if(moveCount <= 0) 
+            if (moveCount <= 0)
             {
-               /* waitCount = waitTime;*/
-               // or randomize with below code line
+                /* waitCount = waitTime;*/
+                // or randomize with below code line
                 waitCount = Random.Range(waitTime * .75f, waitTime * 1.25f);
             }
-        }else if(waitCount > 0)
+            anim.SetBool("isMoving", true);
+
+        }
+        else if(waitCount > 0)
             {
             waitCount -= Time.deltaTime;
             theRB.velocity = new Vector2(0F, theRB.velocity.y);
@@ -79,12 +85,14 @@ public class EnemyController : MonoBehaviour
             if(waitCount <= 0)
             {
                 /*moveCount = moveTime;*/
-
-                moveCount = Random.Range(moveTime * .75f, waitTime * .75f);
+                // or randomize with below code line
+                 moveCount = Random.Range(moveTime * .75f, waitTime * .75f);
             }
+            anim.SetBool("isMoving", false);
+        }
+        
 
-            }
 
-       
+
     }
 }
